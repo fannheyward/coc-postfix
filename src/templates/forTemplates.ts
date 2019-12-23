@@ -11,6 +11,10 @@ export class ForTemplate extends BaseTemplate {
       .replace(`for (const \${1:i} = 0; \${1} < \${2:{{expr}}}.length; \${1}++) {\n${getIndentCharacters()}\${0}\n}`, position, true)
       .build();
   }
+
+  canUseNew(code: string): boolean {
+    return true;
+  }
 }
 
 export class ForOfTemplate extends BaseTemplate {
@@ -19,6 +23,10 @@ export class ForOfTemplate extends BaseTemplate {
       .description('for (let item of expr)')
       .replace(`for (let \${1:item} of \${2:{{expr}}}) {\n${getIndentCharacters()}\${0}\n}`, position, true)
       .build();
+  }
+
+  canUseNew(code: any): boolean {
+    return false;
   }
 }
 

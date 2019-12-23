@@ -1,4 +1,3 @@
-import { Node } from 'typescript';
 import { Position } from 'vscode-languageserver-protocol';
 import { CompletionItemBuilder } from '../completionItemBuilder';
 import { BaseTemplate } from './baseTemplates';
@@ -8,7 +7,7 @@ export class ConsoleTemplate extends BaseTemplate {
     super();
   }
 
-  buildCompletionItem(code: string, position: Position, node: Node) {
+  buildCompletionItem(code: string, position: Position) {
     return CompletionItemBuilder.create(this.level, code)
       .description(`console.${this.level}(expr)`)
       .replace(`console.${this.level}({{expr}})`, position)

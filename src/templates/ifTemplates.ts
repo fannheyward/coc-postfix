@@ -1,4 +1,3 @@
-import { Node, SyntaxKind } from 'typescript';
 import { Position } from 'vscode-languageserver-protocol';
 import { CompletionItemBuilder } from '../completionItemBuilder';
 import { getIndentCharacters } from '../utils';
@@ -14,11 +13,8 @@ export class IfTemplate extends BaseTemplate {
 }
 
 export class ElseTemplate extends BaseTemplate {
-  buildCompletionItem(code: string, position: Position, node: Node) {
+  buildCompletionItem(code: string, position: Position) {
     let replacement = '{{expr}}';
-    if (node.kind === SyntaxKind.BinaryExpression) {
-      replacement = `(${replacement})`;
-    }
 
     return CompletionItemBuilder.create('else', code)
       .description(`if (!expr)`)

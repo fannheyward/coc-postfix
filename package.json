@@ -19,11 +19,9 @@
   },
   "devDependencies": {
     "@types/glob": "^7.1.1",
-    "@types/lodash": "^4.14.149",
     "@types/node": "^12.12.14",
     "coc.nvim": "^0.0.74",
     "glob": "^7.1.6",
-    "lodash": "^4.17.15",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.3",
     "vscode-languageserver-protocol": "^3.15.0-next.14"
