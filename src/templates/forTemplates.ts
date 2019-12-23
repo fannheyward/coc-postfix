@@ -5,7 +5,6 @@ import { BaseTemplate } from './baseTemplates';
 
 export class ForTemplate extends BaseTemplate {
   buildCompletionItem(code: string, position: Position) {
-    console.error(`for (let \${1:i} = 0; \${1} < \${2:{{expr}}}.length; \${1}++) {\n${getIndentCharacters()}\${0}\n}`);
     return CompletionItemBuilder.create('for', code)
       .description('for (let i = 0; i < expr.Length; i++)')
       .replace(`for (let \${1:i} = 0; \${1} < \${2:{{expr}}}.length; \${1}++) {\n${getIndentCharacters()}\${0}\n}`, position, true)

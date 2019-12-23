@@ -9,7 +9,6 @@ export class PostfixCompletionProvider implements CompletionItemProvider {
   constructor() {
     const files = glob.sync('./templates/*.js', { cwd: __dirname });
     files.forEach((path: string) => {
-      console.error(path);
       const builder: () => IPostfixTemplate | IPostfixTemplate[] = require(path).build;
       if (builder) {
         let tpls = builder();

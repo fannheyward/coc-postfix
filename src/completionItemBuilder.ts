@@ -15,7 +15,6 @@ export class CompletionItemBuilder {
 
   public replace = (replacement: string, position: Position, useSnippets?: boolean): CompletionItemBuilder => {
     const codeBeforeTheDot = this.code.substr(0, this.code.lastIndexOf('.'));
-    console.error(`codeBeforeTheDot, ${codeBeforeTheDot}`);
 
     if (useSnippets) {
       this.item.insertTextFormat = InsertTextFormat.Snippet;
