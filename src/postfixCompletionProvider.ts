@@ -7,7 +7,7 @@ export class PostfixCompletionProvider implements CompletionItemProvider {
   private templates: IPostfixTemplate[] = [];
 
   constructor() {
-    const files = glob.sync('./templates/forTemplates.js', { cwd: __dirname });
+    const files = glob.sync('./templates/*.js', { cwd: __dirname });
     files.forEach((path: string) => {
       console.error(path);
       const builder: () => IPostfixTemplate | IPostfixTemplate[] = require(path).build;
@@ -44,6 +44,6 @@ export class PostfixCompletionProvider implements CompletionItemProvider {
 
     const prefix = line.substring(firstNonWhitespaceCharacterIndex, dotIdx);
 
-    return this.templates.filter(t => t.canUseNew(prefix)).map(t => t.buildCompletionItem(code, position));
+    return this.templates.filter(t => t.canUse(prefix)).map(t => t.buildCompletionItem(code, position));
   }
 }

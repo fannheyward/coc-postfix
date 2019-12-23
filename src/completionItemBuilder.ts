@@ -6,7 +6,7 @@ export class CompletionItemBuilder {
   private item: CompletionItem;
 
   constructor(private keyword: string, private code: string) {
-    this.item = CompletionItem.create(keyword);
+    this.item = CompletionItem.create(this.keyword);
     this.item.kind = CompletionItemKind.Snippet;
     this.item.detail = COMPLETION_ITEM_TITLE;
   }
