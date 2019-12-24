@@ -10,7 +10,7 @@ export class VarTemplate extends BaseTemplate {
   buildCompletionItem(code: string, position: Position) {
     return CompletionItemBuilder.create(this.keyword, code)
       .description(`${this.keyword} name = expr`)
-      .replace(this.keyword + ' ${1:name} = {{expr}}$0', position, true)
+      .replace(`${this.keyword} \${1:name} = {{expr}}$0`, position, true)
       .build();
   }
 }
