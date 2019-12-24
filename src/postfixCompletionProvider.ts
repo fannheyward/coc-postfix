@@ -1,6 +1,6 @@
 import { CompletionItemProvider, workspace } from 'coc.nvim';
 import * as glob from 'glob';
-import { CancellationToken, CompletionList, Position, TextDocument, CompletionItem } from 'vscode-languageserver-protocol';
+import { CompletionItem, CompletionList, Position, TextDocument } from 'vscode-languageserver-protocol';
 import { IPostfixTemplate } from './template';
 
 export class PostfixCompletionProvider implements CompletionItemProvider {
@@ -21,7 +21,7 @@ export class PostfixCompletionProvider implements CompletionItemProvider {
     });
   }
 
-  async provideCompletionItems(document: TextDocument, position: Position, token: CancellationToken): Promise<CompletionList | CompletionItem[] | null> {
+  async provideCompletionItems(document: TextDocument, position: Position): Promise<CompletionList | CompletionItem[] | null> {
     const line = await workspace.getLine(document.uri, position.line);
     let firstNonWhitespaceCharacterIndex = line.length;
     for (var i = 0, len = line.length; i < len; i++) {
@@ -42,7 +42,6 @@ export class PostfixCompletionProvider implements CompletionItemProvider {
     }
 
     const prefix = line.substring(firstNonWhitespaceCharacterIndex, dotIdx);
-
     return this.templates.filter(t => t.canUse(prefix)).map(t => t.buildCompletionItem(code, position));
   }
 }
