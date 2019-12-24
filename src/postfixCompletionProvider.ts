@@ -1,5 +1,5 @@
 import { CompletionItemProvider, workspace } from 'coc.nvim';
-import * as glob from 'glob';
+import glob from 'tiny-glob';
 import { CompletionItem, CompletionList, Position, TextDocument } from 'vscode-languageserver-protocol';
 import { IPostfixTemplate } from './template';
 
@@ -7,17 +7,18 @@ export class PostfixCompletionProvider implements CompletionItemProvider {
   private templates: IPostfixTemplate[] = [];
 
   constructor() {
-    const files = glob.sync('./templates/*.js', { cwd: __dirname });
-    files.forEach((path: string) => {
-      const builder: () => IPostfixTemplate | IPostfixTemplate[] = require(path).build;
-      if (builder) {
-        let tpls = builder();
-        if (Array.isArray(tpls)) {
-          this.templates.push(...tpls);
-        } else {
-          this.templates.push(tpls);
+    glob('templates/*.js', { cwd: __dirname }).then(files => {
+      files.forEach((path: string) => {
+        const builder: () => IPostfixTemplate | IPostfixTemplate[] = require('./' + path).build;
+        if (builder) {
+          let tpls = builder();
+          if (Array.isArray(tpls)) {
+            this.templates.push(...tpls);
+          } else {
+            this.templates.push(tpls);
+          }
         }
-      }
+      });
     });
   }
 
