@@ -9,6 +9,7 @@ export class CompletionItemBuilder {
     this.item = CompletionItem.create(this.keyword);
     this.item.kind = CompletionItemKind.Snippet;
     this.item.detail = COMPLETION_ITEM_TITLE;
+    this.item.preselect = true;
   }
 
   public static create = (keyword: string, code: string) => new CompletionItemBuilder(keyword, code);
