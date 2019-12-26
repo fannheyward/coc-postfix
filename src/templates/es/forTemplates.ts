@@ -1,6 +1,6 @@
 import { Position } from 'vscode-languageserver-protocol';
-import { CompletionItemBuilder } from '../completionItemBuilder';
-import { BaseTemplate } from './baseTemplates';
+import { CompletionItemBuilder } from '../../completionItemBuilder';
+import { BaseTemplate } from '../baseTemplates';
 
 class ForTemplate extends BaseTemplate {
   buildCompletionItem(code: string, position: Position) {

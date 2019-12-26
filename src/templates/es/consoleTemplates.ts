@@ -1,6 +1,6 @@
 import { Position } from 'vscode-languageserver-protocol';
-import { CompletionItemBuilder } from '../completionItemBuilder';
-import { BaseTemplate } from './baseTemplates';
+import { CompletionItemBuilder } from '../../completionItemBuilder';
+import { BaseTemplate } from '../baseTemplates';
 
 export class ConsoleTemplate extends BaseTemplate {
   constructor(private level: 'log' | 'warn' | 'error') {

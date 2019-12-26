@@ -9,8 +9,9 @@ class PostfixCompletionProvider implements CompletionItemProvider {
   private templates: IPostfixTemplate[] = [];
 
   constructor() {
-    glob('templates/*.js', { cwd: __dirname }).then(files => {
+    glob('templates/**/*.js', { cwd: __dirname }).then(files => {
       files.forEach((path: string) => {
+        console.error(path);
         const builder: () => IPostfixTemplate | IPostfixTemplate[] = require('./' + path).build;
         if (builder) {
           let tpls = builder();
