@@ -3,7 +3,7 @@ import glob from 'tiny-glob';
 import { CompletionItem, CompletionList, Position, TextDocument } from 'vscode-languageserver-protocol';
 import { IPostfixTemplate } from './template';
 
-const DOCUMENT_SELECTOR: string[] = ['typescript', 'javascript'];
+const DOCUMENT_SELECTOR: string[] = ['typescript', 'javascript', 'go'];
 
 class PostfixCompletionProvider implements CompletionItemProvider {
   private templates: IPostfixTemplate[] = [];
@@ -45,8 +45,8 @@ class PostfixCompletionProvider implements CompletionItemProvider {
       return null;
     }
 
-    const prefix = line.substring(firstNonWhitespaceCharacterIndex, dotIdx);
-    return this.templates.filter(t => t.canUse(prefix)).map(t => t.buildCompletionItem(code, position));
+    // const prefix = line.substring(firstNonWhitespaceCharacterIndex, dotIdx);
+    return this.templates.filter(t => t.canUse(document.languageId)).map(t => t.buildCompletionItem(code, position));
   }
 }
 

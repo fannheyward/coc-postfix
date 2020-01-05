@@ -1,13 +1,17 @@
 import { Position } from 'vscode-languageserver-protocol';
 import { CompletionItemBuilder } from '../completionItemBuilder';
-import { BaseTemplate } from './baseTemplates';
+import { IPostfixTemplate } from '../template';
 
-export class NotTemplate extends BaseTemplate {
+export class NotTemplate implements IPostfixTemplate {
   buildCompletionItem(code: string, position: Position) {
     return CompletionItemBuilder.create('not', code)
       .description('!expr')
       .replace(`!{{expr}}`, position)
       .build();
+  }
+
+  canUse() {
+    return true;
   }
 }
 

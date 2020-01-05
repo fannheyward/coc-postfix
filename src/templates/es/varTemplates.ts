@@ -1,6 +1,6 @@
 import { Position } from 'vscode-languageserver-protocol';
 import { CompletionItemBuilder } from '../../completionItemBuilder';
-import { BaseTemplate } from '../baseTemplates';
+import { BaseTemplate } from './baseTemplates';
 
 export class VarTemplate extends BaseTemplate {
   constructor(private keyword: 'var' | 'let' | 'const') {

@@ -1,7 +1,11 @@
 import { CompletionItem, Position } from 'vscode-languageserver-protocol';
-import { IPostfixTemplate } from '../template';
+import { IPostfixTemplate } from '../../template';
 
 export abstract class BaseTemplate implements IPostfixTemplate {
+  private get languages(): string[] {
+    return ['go'];
+  }
+
   abstract buildCompletionItem(code: string, position: Position): CompletionItem;
 
   indentCharacters = () => {
@@ -9,7 +13,10 @@ export abstract class BaseTemplate implements IPostfixTemplate {
     return '\t';
   };
 
-  canUse(code: string): boolean {
-    return true;
+  canUse(language: string): boolean {
+    if (this.languages.includes(language)) {
+      return true;
+    }
+    return false;
   }
 }
