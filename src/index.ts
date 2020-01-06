@@ -14,7 +14,7 @@ class PostfixCompletionProvider implements CompletionItemProvider {
         console.error(path);
         const builder: () => BaseTemplate | BaseTemplate[] = require('./' + path).build;
         if (builder) {
-          let tpls = builder();
+          const tpls = builder();
           if (Array.isArray(tpls)) {
             this.templates.push(...tpls);
           } else {
@@ -28,7 +28,7 @@ class PostfixCompletionProvider implements CompletionItemProvider {
   async provideCompletionItems(document: TextDocument, position: Position): Promise<CompletionList | CompletionItem[] | null> {
     const line = await workspace.getLine(document.uri, position.line);
     let firstNonWhitespaceCharacterIndex = line.length;
-    for (var i = 0, len = line.length; i < len; i++) {
+    for (let i = 0, len = line.length; i < len; i++) {
       if (!/\s/.test(line.charAt(i))) {
         firstNonWhitespaceCharacterIndex = i;
         break;

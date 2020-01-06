@@ -13,11 +13,9 @@ export class IfTemplate extends ESBaseTemplate {
 
 export class ElseTemplate extends ESBaseTemplate {
   buildCompletionItem(code: string, position: Position) {
-    let replacement = '{{expr}}';
-
     return CompletionItemBuilder.create('else', code)
       .description(`if (!expr)`)
-      .replace(`if (!${replacement}) {\n${this.indentCharacters()}\${0}\n}`, position, true)
+      .replace(`if (!{{expr}}) {\n${this.indentCharacters()}\${0}\n}`, position, true)
       .build();
   }
 }

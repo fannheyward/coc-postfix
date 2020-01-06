@@ -11,6 +11,7 @@
   },
   "scripts": {
     "clean": "rimraf lib",
+    "lint": "eslint src --ext ts",
     "watch": "tsc -p tsconfig.json --watch",
     "build": "tsc -p tsconfig.json"
   },
@@ -20,8 +21,19 @@
   },
   "devDependencies": {
     "@types/node": "^13.1.0",
+    "@typescript-eslint/eslint-plugin": "^2.14.0",
+    "@typescript-eslint/parser": "^2.14.0",
     "coc.nvim": "^0.0.74",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^1.19.1",
     "typescript": "^3.7.3"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 140,
+    "semi": true
   },
   "contributes": {
     "configuration": {
