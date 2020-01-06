@@ -1,8 +1,8 @@
 import { Position } from 'vscode-languageserver-protocol';
 import { CompletionItemBuilder } from '../../completionItemBuilder';
-import { BaseTemplate } from './baseTemplates';
+import { ESBaseTemplate } from './baseTemplate';
 
-class ForTemplate extends BaseTemplate {
+class ForTemplate extends ESBaseTemplate {
   buildCompletionItem(code: string, position: Position) {
     return CompletionItemBuilder.create('for', code)
       .description('for (let i = 0; i < expr.Length; i++)')
@@ -11,7 +11,7 @@ class ForTemplate extends BaseTemplate {
   }
 }
 
-class ForOfTemplate extends BaseTemplate {
+class ForOfTemplate extends ESBaseTemplate {
   buildCompletionItem(code: string, position: Position) {
     return CompletionItemBuilder.create('forof', code)
       .description('for (let item of expr)')
@@ -20,7 +20,7 @@ class ForOfTemplate extends BaseTemplate {
   }
 }
 
-class ForInTemplate extends BaseTemplate {
+class ForInTemplate extends ESBaseTemplate {
   buildCompletionItem(code: string, position: Position) {
     return CompletionItemBuilder.create('forin', code)
       .description('for (let item in expr)')

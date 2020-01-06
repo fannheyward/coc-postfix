@@ -1,8 +1,8 @@
 import { Position } from 'vscode-languageserver-protocol';
 import { CompletionItemBuilder } from '../../completionItemBuilder';
-import { BaseTemplate } from './baseTemplates';
+import { GoBaseTemplate } from './baseTemplate';
 
-export class IfTemplate extends BaseTemplate {
+export class IfTemplate extends GoBaseTemplate {
   buildCompletionItem(code: string, position: Position) {
     return CompletionItemBuilder.create('iflen', code)
       .description('if len(expr)')
@@ -11,7 +11,7 @@ export class IfTemplate extends BaseTemplate {
   }
 }
 
-export class ElseTemplate extends BaseTemplate {
+export class ElseTemplate extends GoBaseTemplate {
   buildCompletionItem(code: string, position: Position) {
     return CompletionItemBuilder.create('else', code)
       .description('if !expr')
@@ -20,7 +20,7 @@ export class ElseTemplate extends BaseTemplate {
   }
 }
 
-export class IfEqualityTemplate extends BaseTemplate {
+export class IfEqualityTemplate extends GoBaseTemplate {
   constructor(private keyword: string, private operator: string, private operand: string) {
     super();
   }

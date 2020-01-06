@@ -1,8 +1,8 @@
 import { Position } from 'vscode-languageserver-protocol';
 import { CompletionItemBuilder } from '../../completionItemBuilder';
-import { BaseTemplate } from './baseTemplates';
+import { GoBaseTemplate } from './baseTemplate';
 
-export class PrintlnTemplate extends BaseTemplate {
+export class PrintlnTemplate extends GoBaseTemplate {
   buildCompletionItem(code: string, position: Position) {
     return CompletionItemBuilder.create('println', code)
       .description(`fmt.Println(expr)`)
@@ -11,7 +11,7 @@ export class PrintlnTemplate extends BaseTemplate {
   }
 }
 
-export class PrintfTemplate extends BaseTemplate {
+export class PrintfTemplate extends GoBaseTemplate {
   buildCompletionItem(code: string, position: Position) {
     return CompletionItemBuilder.create('printf', code)
       .description(`fmt.Printf(expr)`)

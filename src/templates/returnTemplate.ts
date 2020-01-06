@@ -1,8 +1,12 @@
 import { Position } from 'vscode-languageserver-protocol';
 import { CompletionItemBuilder } from '../completionItemBuilder';
-import { IPostfixTemplate } from '../template';
+import { BaseTemplate } from '../baseTemplate';
 
-export class ReturnTemplate implements IPostfixTemplate {
+export class ReturnTemplate extends BaseTemplate {
+  get languages() {
+    return [];
+  }
+
   buildCompletionItem(code: string, position: Position) {
     return CompletionItemBuilder.create('return', code)
       .description(`return expr`)

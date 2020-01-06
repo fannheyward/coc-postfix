@@ -1,8 +1,8 @@
 import { Position } from 'vscode-languageserver-protocol';
 import { CompletionItemBuilder } from '../../completionItemBuilder';
-import { BaseTemplate } from './baseTemplates';
+import { ESBaseTemplate } from './baseTemplate';
 
-export class IfTemplate extends BaseTemplate {
+export class IfTemplate extends ESBaseTemplate {
   buildCompletionItem(code: string, position: Position) {
     return CompletionItemBuilder.create('if', code)
       .description(`if (expr)`)
@@ -11,7 +11,7 @@ export class IfTemplate extends BaseTemplate {
   }
 }
 
-export class ElseTemplate extends BaseTemplate {
+export class ElseTemplate extends ESBaseTemplate {
   buildCompletionItem(code: string, position: Position) {
     let replacement = '{{expr}}';
 
@@ -22,7 +22,7 @@ export class ElseTemplate extends BaseTemplate {
   }
 }
 
-export class IfEqualityTemplate extends BaseTemplate {
+export class IfEqualityTemplate extends ESBaseTemplate {
   constructor(private keyword: string, private operator: string, private operand: string) {
     super();
   }
