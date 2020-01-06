@@ -1,6 +1,6 @@
 # coc-postfix
 
-Postfix completion extension for coc.nvim. Only support `TypeScript|JavaScript|Go` by now.
+[Postfix completion](https://www.jetbrains.com/help/idea/settings-postfix-completion.html) extension for coc.nvim. Only support `TypeScript|JavaScript|Go` by now.
 
 ![11](https://user-images.githubusercontent.com/345274/71809427-ff3a5880-3067-11ea-9631-77d59f9b2751.gif)
 
