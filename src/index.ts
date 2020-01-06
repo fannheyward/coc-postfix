@@ -51,6 +51,10 @@ class PostfixCompletionProvider implements CompletionItemProvider {
 }
 
 export async function activate(context: ExtensionContext): Promise<void> {
+  const enable = workspace.getConfiguration('postfix').get('enable', true);
+  if (!enable) {
+    return;
+  }
   const provider = new PostfixCompletionProvider();
   context.subscriptions.push(languages.registerCompletionItemProvider('Postfix Completion', 'Postfix', DOCUMENT_SELECTOR, provider));
 }

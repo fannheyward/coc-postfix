@@ -5,7 +5,9 @@
   "author": "Heyward Fann <fannheyward@gmail.com>",
   "license": "MIT",
   "main": "lib/index.js",
-  "keywords": [],
+  "keywords": [
+    "coc.nvim"
+  ],
   "engines": {
     "coc": "^0.0.70"
   },
@@ -41,7 +43,7 @@
       "type": "object",
       "title": "coc-postfix configuration",
       "properties": {
-        "postfix.enabled": {
+        "postfix.enable": {
           "type": "boolean",
           "default": true,
           "description": "Enable coc-postfix extension"
