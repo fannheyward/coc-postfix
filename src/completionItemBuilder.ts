@@ -19,7 +19,7 @@ export class CompletionItemBuilder {
 
     if (useSnippets) {
       this.item.insertTextFormat = InsertTextFormat.Snippet;
-      const escapedCode = codeBeforeTheDot.replace('$', '\\$');
+      const escapedCode = codeBeforeTheDot.replace(/\$/g, '\\$');
       replacement = replacement.replace('{{expr}}', escapedCode);
     } else {
       replacement = replacement.replace('{{expr}}', codeBeforeTheDot);
