@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "tiny-glob": "^0.2.6",
-    "vscode-languageserver-protocol": "3.15.2"
+    "vscode-languageserver-protocol": "3.15.3"
   },
   "devDependencies": {
     "@types/node": "^13.1.0",
