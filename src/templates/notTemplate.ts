@@ -8,10 +8,7 @@ export class NotTemplate extends BaseTemplate {
   }
 
   buildCompletionItem(code: string, position: Position) {
-    return CompletionItemBuilder.create('not', code)
-      .description('!expr')
-      .replace(`!{{expr}}`, position)
-      .build();
+    return CompletionItemBuilder.create('not', code).description('!expr').replace(`!{{expr}}`, position).build();
   }
 
   canUse() {

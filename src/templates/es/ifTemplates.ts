@@ -39,5 +39,5 @@ export const build = () => [
   new IfEqualityTemplate('null', '===', 'null'),
   new IfEqualityTemplate('notnull', '!==', 'null'),
   new IfEqualityTemplate('undefined', '===', 'undefined'),
-  new IfEqualityTemplate('notundefined', '!==', 'undefined')
+  new IfEqualityTemplate('notundefined', '!==', 'undefined'),
 ];

@@ -8,10 +8,7 @@ export class ReturnTemplate extends BaseTemplate {
   }
 
   buildCompletionItem(code: string, position: Position) {
-    return CompletionItemBuilder.create('return', code)
-      .description(`return expr`)
-      .replace('return {{expr}}', position)
-      .build();
+    return CompletionItemBuilder.create('return', code).description(`return expr`).replace('return {{expr}}', position).build();
   }
 
   canUse() {

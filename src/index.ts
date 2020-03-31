@@ -9,7 +9,7 @@ class PostfixCompletionProvider implements CompletionItemProvider {
   private templates: BaseTemplate[] = [];
 
   constructor() {
-    glob('templates/**/*.js', { cwd: __dirname }).then(files => {
+    glob('templates/**/*.js', { cwd: __dirname }).then((files) => {
       files.forEach((path: string) => {
         console.error(path);
         const builder: () => BaseTemplate | BaseTemplate[] = require('./' + path).build;
@@ -46,7 +46,7 @@ class PostfixCompletionProvider implements CompletionItemProvider {
     }
 
     // const prefix = line.substring(firstNonWhitespaceCharacterIndex, dotIdx);
-    return this.templates.filter(t => t.canUse(document.languageId)).map(t => t.buildCompletionItem(code, position));
+    return this.templates.filter((t) => t.canUse(document.languageId)).map((t) => t.buildCompletionItem(code, position));
   }
 }
 

@@ -37,5 +37,5 @@ export const build = () => [
   new IfTemplate(),
   new ElseTemplate(),
   new IfEqualityTemplate('nil', '==', 'nil'),
-  new IfEqualityTemplate('notnil', '!=', 'nil')
+  new IfEqualityTemplate('notnil', '!=', 'nil'),
 ];
