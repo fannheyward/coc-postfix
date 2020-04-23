@@ -35,8 +35,12 @@ class PostfixCompletionProvider implements CompletionItemProvider {
       }
     }
 
-    const dotIdx = line.lastIndexOf('.', position.character);
-    if (dotIdx === -1) {
+    const lastDot = line.lastIndexOf('.', position.character);
+    if (lastDot === -1) {
+      return null;
+    }
+    const last = line.substr(lastDot + 1);
+    if (last && /[\s|()]/.test(last)) {
       return null;
     }
 
