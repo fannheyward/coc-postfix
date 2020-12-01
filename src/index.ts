@@ -1,6 +1,7 @@
 import { CompletionItemProvider, ExtensionContext, languages, workspace } from 'coc.nvim';
 import glob from 'tiny-glob';
-import { CompletionItem, CompletionList, Position, TextDocument } from 'vscode-languageserver-protocol';
+import { CompletionItem, CompletionList, Position } from 'vscode-languageserver-protocol';
+import { TextDocument } from 'vscode-languageserver-textdocument';
 import { BaseTemplate } from './baseTemplate';
 
 const DOCUMENT_SELECTOR: string[] = ['typescript', 'javascript', 'go'];
@@ -11,7 +12,6 @@ class PostfixCompletionProvider implements CompletionItemProvider {
   constructor() {
     glob('templates/**/*.js', { cwd: __dirname }).then((files) => {
       files.forEach((path: string) => {
-        console.error(path);
         const builder: () => BaseTemplate | BaseTemplate[] = require('./' + path).build;
         if (builder) {
           const tpls = builder();
