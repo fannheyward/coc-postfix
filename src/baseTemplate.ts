@@ -1,4 +1,5 @@
-import { CompletionItem, Position } from 'vscode-languageserver-protocol';
+import { CompletionItem } from 'coc.nvim';
+import { Position } from 'vscode-languageserver-protocol';
 
 export abstract class BaseTemplate {
   abstract get languages(): string[];

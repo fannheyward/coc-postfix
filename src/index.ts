@@ -1,6 +1,6 @@
-import { CompletionItemProvider, ExtensionContext, languages, workspace } from 'coc.nvim';
+import { CompletionItem, CompletionItemProvider, ExtensionContext, languages, workspace } from 'coc.nvim';
 import glob from 'tiny-glob';
-import { CompletionItem, CompletionList, Position } from 'vscode-languageserver-protocol';
+import { Position } from 'vscode-languageserver-protocol';
 import { TextDocument } from 'vscode-languageserver-textdocument';
 import { BaseTemplate } from './baseTemplate';
 
@@ -25,7 +25,7 @@ class PostfixCompletionProvider implements CompletionItemProvider {
     });
   }
 
-  async provideCompletionItems(document: TextDocument, position: Position): Promise<CompletionList | CompletionItem[] | null> {
+  async provideCompletionItems(document: TextDocument, position: Position): Promise<CompletionItem[] | null> {
     const line = await workspace.getLine(document.uri, position.line);
     let firstNonWhitespaceCharacterIndex = line.length;
     for (let i = 0, len = line.length; i < len; i++) {
