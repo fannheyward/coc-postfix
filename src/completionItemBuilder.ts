@@ -6,14 +6,15 @@ const COMPLETION_ITEM_TITLE = 'Postfix templates';
 export class CompletionItemBuilder {
   private item: CompletionItem;
 
-  constructor(keyword: string, private code: string) {
-    this.item = { label: keyword, filterText: code, kind: CompletionItemKind.Snippet, detail: COMPLETION_ITEM_TITLE };
+  constructor(private keyword: string, private code: string) {
+    this.item = { label: this.keyword, kind: CompletionItemKind.Snippet, detail: COMPLETION_ITEM_TITLE };
   }
 
   public static create = (keyword: string, code: string) => new CompletionItemBuilder(keyword, code);
 
   public replace = (replacement: string, position: Position, useSnippets?: boolean): CompletionItemBuilder => {
     const codeBeforeTheDot = this.code.substr(0, this.code.lastIndexOf('.'));
+    this.item.filterText = `${codeBeforeTheDot}.${this.keyword}`;
 
     if (useSnippets) {
       this.item.insertTextFormat = InsertTextFormat.Snippet;
