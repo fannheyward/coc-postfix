@@ -4,7 +4,7 @@ import { Position } from 'vscode-languageserver-protocol';
 import { TextDocument } from 'vscode-languageserver-textdocument';
 import { BaseTemplate } from './baseTemplate';
 
-const DOCUMENT_SELECTOR: string[] = ['typescript', 'javascript', 'go'];
+const DOCUMENT_SELECTOR: string[] = ['typescript', 'javascript', 'go', 'python'];
 
 class PostfixCompletionProvider implements CompletionItemProvider {
   private templates: BaseTemplate[] = [];
