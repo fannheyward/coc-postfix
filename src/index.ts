@@ -1,4 +1,12 @@
-import { CompletionItem, CompletionItemProvider, ExtensionContext, languages, workspace } from 'coc.nvim';
+import {
+  CancellationToken,
+  CompletionContext,
+  CompletionItem,
+  CompletionItemProvider,
+  ExtensionContext,
+  languages,
+  workspace,
+} from 'coc.nvim';
 import glob from 'tiny-glob';
 import { Position } from 'vscode-languageserver-protocol';
 import { TextDocument } from 'vscode-languageserver-textdocument';
@@ -25,9 +33,17 @@ class PostfixCompletionProvider implements CompletionItemProvider {
     });
   }
 
-  async provideCompletionItems(document: TextDocument, position: Position): Promise<CompletionItem[] | null> {
-    const line = await workspace.getLine(document.uri, position.line);
-    let firstNonWhitespaceCharacterIndex = line.length;
+  async provideCompletionItems(
+    document: TextDocument,
+    position: Position,
+    _token: CancellationToken,
+    context: CompletionContext
+  ): Promise<CompletionItem[] | null> {
+    const { option } = context;
+    if (!option) return null;
+
+    const line = option.line;
+    let firstNonWhitespaceCharacterIndex = option.line.length;
     for (let i = 0, len = line.length; i < len; i++) {
       if (!/\s/.test(line.charAt(i))) {
         firstNonWhitespaceCharacterIndex = i;
@@ -60,5 +76,5 @@ export async function activate(context: ExtensionContext): Promise<void> {
     return;
   }
   const provider = new PostfixCompletionProvider();
-  context.subscriptions.push(languages.registerCompletionItemProvider('Postfix Completion', 'Postfix', DOCUMENT_SELECTOR, provider));
+  context.subscriptions.push(languages.registerCompletionItemProvider('Postfix', 'Postfix', DOCUMENT_SELECTOR, provider, ['.'], 10));
 }

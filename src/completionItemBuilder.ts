@@ -1,5 +1,5 @@
 import { CompletionItem } from 'coc.nvim';
-import { TextEdit, Range, CompletionItemKind, Position, InsertTextFormat } from 'vscode-languageserver-protocol';
+import { CompletionItemKind, InsertTextFormat, Position, Range, TextEdit } from 'vscode-languageserver-protocol';
 
 const COMPLETION_ITEM_TITLE = 'Postfix templates';
 
@@ -25,7 +25,8 @@ export class CompletionItemBuilder {
     }
 
     const range = Range.create(position.line, Math.max(position.character - this.code.length, 0), position.line, position.character);
-    this.item.textEdit = TextEdit.replace(range, replacement);
+    this.item.insertText = replacement;
+    this.item.additionalTextEdits = [TextEdit.del(range)];
 
     return this;
   };
