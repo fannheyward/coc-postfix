@@ -20,6 +20,7 @@ class PostfixCompletionProvider implements CompletionItemProvider {
   constructor() {
     glob('templates/**/*.js', { cwd: __dirname }).then((files) => {
       files.forEach((path: string) => {
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
         const builder: () => BaseTemplate | BaseTemplate[] = require('./' + path).build;
         if (builder) {
           const tpls = builder();
