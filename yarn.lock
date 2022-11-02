@@ -202,10 +202,10 @@ cli-width@^2.0.0:
   resolved "https://registry.yarnpkg.com/cli-width/-/cli-width-2.2.1.tgz#b0433d0b4e9c847ef18868a4ef16fd5fc8271c48"
   integrity sha512-GRMWDxpOB6Dgk2E5Uo+3eEBvtOOlimMmpbFiKuLFnQzYDavtLFY3K5ona41jgN/WdRZtG7utuVSVTL4HbZHGkw==
 
-coc.nvim@^0.0.81-next.3:
-  version "0.0.81-next.5"
-  resolved "https://registry.yarnpkg.com/coc.nvim/-/coc.nvim-0.0.81-next.5.tgz#b09bda5a2d527f7cd7bd786d4dee958160285e2b"
-  integrity sha512-NUTEWmjm9uKGBD8FNsj55PH1Xn4hD5uDCs7EdMoBpXWehq6/P1UoDZQfWXQv9HTq4zF/jH3g7KtZtl94VTlW4A==
+coc.nvim@^0.0.82:
+  version "0.0.82"
+  resolved "https://registry.yarnpkg.com/coc.nvim/-/coc.nvim-0.0.82.tgz#5230e2eb17e8499a60a97b46d844f2d08c593b29"
+  integrity sha512-+70ap6FH8FSdaQ0CPijaasQzg6ue84j4/LkX6ZSpALX7YKBcGGDkCcd6adgaC/86b/ZqT3iTTEbMh3mdaI5qPA==
 
 color-convert@^1.9.0:
   version "1.9.3"
