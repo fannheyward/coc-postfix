@@ -66,8 +66,9 @@ class PostfixCompletionProvider implements CompletionItemProvider {
       return null;
     }
 
+    const pos = Position.create(position.line, lastDot + 1);
     // const prefix = line.substring(firstNonWhitespaceCharacterIndex, dotIdx);
-    return this.templates.filter((t) => t.canUse(document.languageId)).map((t) => t.buildCompletionItem(code, position));
+    return this.templates.filter((t) => t.canUse(document.languageId)).map((t) => t.buildCompletionItem(code, pos));
   }
 }
 

@@ -24,7 +24,7 @@ export class CompletionItemBuilder {
       replacement = replacement.replace('{{expr}}', codeBeforeTheDot);
     }
 
-    const range = Range.create(position.line, Math.max(position.character - this.code.length, 0), position.line, position.character);
+    const range = Range.create(position.line, Math.max(position.character - codeBeforeTheDot.length - 1, 0), position.line, position.character);
     this.item.insertText = replacement;
     this.item.additionalTextEdits = [TextEdit.del(range)];
 
